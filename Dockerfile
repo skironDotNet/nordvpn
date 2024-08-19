@@ -20,4 +20,7 @@ RUN apt-get update -y && apt-get upgrade -y && \
 
 COPY /rootfs /
 ENV S6_CMD_WAIT_FOR_SERVICES=1
+RUN chmod +x /etc/cont-init.d/*
+RUN chmod +x /etc/services.d/nordvpn/*
+RUN chmod +x /etc/fix-attrs.d/*
 CMD nord_login && nord_config && nord_connect && nord_migrate && nord_watch
